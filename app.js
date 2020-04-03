@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 ////mongodb+srv://admin-jordan:Baddog8118@cluster0-ckto6.mongodb.net/test?retryWrites=true&w=majority
 //mongodb://localhost:27017/todolistDB
-mongoose.connect("mongodb+srv://admin-jordan:<password>@cluster0-ckto6.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://admin-jordan:test123@cluster0-ckto6.mongodb.net/test?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
