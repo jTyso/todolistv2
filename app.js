@@ -91,27 +91,27 @@ app.post("/delete", function (req, res) {
   const listName = req.body.listName;
 
   if (listName === "Today") {
-    Item.findByIdAndRemove(checkedItemId, function (err) {
+    Item.findByIdAndRemove(itemId, function (err) {
       if (!err) {
         console.log("Successfully deleted checked item.");
         res.redirect("/");
       }
     });
   } else {
-    List.findOneAndUpdate({name: listName}, {$pull: {items: {_id: checkedItemId}}}, function(err, foundList){
-      if (!err){
+    List.findOneAndUpdate({
+      name: listName
+    }, {
+      $pull: {
+        items: {
+          _id: itemId
+        }
+      }
+    }, function (err, foundList) {
+      if (!err) {
         res.redirect("/" + listName);
       }
     });
   }
-  Item.findByIdAndRemove(itemId, function(err){
-    if(err){
-      console.log(err);
-    } else {
-      console.log("Deletion success!");
-    }
-  });
-  res.redirect("/");
 });
 
 app.get("/:customListName", function(req,res){
